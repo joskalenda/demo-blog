@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :set_post
   def create
@@ -5,9 +7,10 @@ class CommentsController < ApplicationController
     CommentsMailer.submitted(comment).deliver_later
     redirect_to @post
   end
-  
+
   private
-    def set_post
-      @post = Post.find(params[:post_id])
-    end
+
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
 end
